@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <section id="first"></section>
+    <section id="roadmap">
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+          <!-- Slides -->
+          <div class="swiper-slide"><h2>CASUAL GAME DEVELOPMENT</h2></div>
+          <div class="swiper-slide"><h2>AAA GAME DEVELOPMENT</h2></div>
+          <div class="swiper-slide"><h2>MOBILE DEVELOPMENT</h2></div>
+          <div class="swiper-slide"><h2>ANIMATION</h2></div>
+          <div class="swiper-slide"><h2>REALISTIC MODELING</h2></div>
+        </div>
+      </div>
+    </section>
+    <section id="third"></section>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      let swiper = new Swiper(".swiper", {
+        slidesPerView: 1,
+        centeredSlides: true,
+        mousewheel: true,
+        width: '100%',
+        translate: 0,
+        mousewheel: {
+          releaseOnEdges: true,
+        },
+        direction: "vertical",
+        effect: "creative",
+        creativeEffect: {
+          prev: {
+            translate: [0, '-14%', -18],
+            opacity: 0.55,
+            rotate: [13, 0, 0]
+          },
+          next: {
+            translate: [0, '14%', -18],
+            opacity: 0.55,
+            rotate: [-13, 0, 0]
+          },
+          limitProgress: 3,
+          freeMode: true
+        },
+      });
+    </script>
+  </body>
+</html>
