@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <section id="first"></section>
+    <section id="moving">
+      <div id="sticky">
+        <div id="moving-content-wrp">
+          <h3>CASUAL GAME DEVELOPMENT</h3>
+          <h3>AAA GAME DEVELOPMENT</h3>
+          <h3>MOBILE DEVELOPMENT</h3>
+          <h3>ANIMATION</h3>
+          <h3>REALISTIC MODELING</h3>
+          <h3>CASUAL GAME DEVELOPMENT</h3>
+          <h3>AAA GAME DEVELOPMENT</h3>
+          <h3>MOBILE DEVELOPMENT</h3>
+          <h3>ANIMATION</h3>
+          <h3>REALISTIC MODELING</h3>
+        </div>
+        <span id="moving-description"> </span>
+      </div>
+    </section>
+    <section id="third"></section>
+    <script>
+      const descriptions = [
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, imeplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, immersivith cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and compeplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+        "Creating high-quality, immersive games with cutting-edge graphics and complex gameplay, designed for the most demanding players.",
+      ];
+      const sticky = document.getElementById("sticky");
+      const scrollArea = document.getElementById("moving-content-wrp");
+      const moving = document.getElementById("moving");
+      const description = document.getElementById("moving-description");
+      let timer;
+      let current = 0;
+
+      const changeDescription = (index) => {
+        if (index === current) return;
+        description.style.opacity = 0;
+        current = index;
+        timer = setTimeout(() => {
+          description.innerHTML = descriptions[index];
+          description.style.opacity = 1;
+        }, 300);
+      };
+
+      const onScroll = () => {
+        const diff = sticky.offsetTop - moving.offsetTop;
+        const middle = scrollArea.offsetTop + scrollArea.offsetHeight / 2;
+        const percentage = diff / (-moving.offsetHeight + sticky.offsetHeight);
+        const value = sticky.offsetHeight * (1 + middle / moving.clientHeight) * percentage;
+        let Z;
+        scrollArea.querySelectorAll("h3").forEach((elem, index) => {
+          const half = scrollArea.offsetHeight / 2;
+          const middle = scrollArea.offsetTop + half;
+          let diff = elem.offsetTop + value;
+          if (Math.abs(diff) < 56) {
+            diff = diff / 2;
+            elem.style.opacity = 1;
+            Z = 0;
+            changeDescription(index);
+          } else {
+            elem.style.opacity = 1 - Math.abs(diff) / middle - 0.3;
+            Z = (Math.abs(diff) / middle) * 50;
+          }
+
+          elem.style.transform = `rotateX(${-diff / 15}deg) translateZ(-${Z}px)`;
+          elem.style.translate = `0 ${Math.round(value)}px`;
+        });
+      };
+
+      window.addEventListener("scroll", onScroll);
+      window.addEventListener("load", onScroll)
+    </script>
+  </body>
+</html>
