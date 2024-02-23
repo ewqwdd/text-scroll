@@ -34,16 +34,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-x: clip;
+
     justify-content: center;
 }
 
 #moving-content-wrp {
     perspective: 300px;
     position: relative;
-    height: 6.94rem;
-    overflow-x: clip;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
     gap: 1.39rem;
 }
 
@@ -51,10 +52,13 @@
     width: 100%;
     text-align: center;
     font-size: 6.94rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     line-height: 1;
-    display: inline-block;
     color: rgba(255, 255, 255, 0.9);
     transition: transform 0.02s ease-in-out;
+    text-wrap: nowrap;
 }
 
 #moving-description {
